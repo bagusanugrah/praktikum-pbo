@@ -28,30 +28,30 @@ public class Kios implements SisiPenjual, SisiPembeli {
                     System.out.println();
                     System.out.println("Rincian Pesanan");
                     System.out.println("Nama: " + barang.getNama());
-                    System.out.println("Harga: " + barang.getHarga());
+                    System.out.println("Harga: Rp" + barang.getHarga());
                     System.out.println("Jumlah: " + jumlahBarang);
                     totalHarga = (float) (jumlahBarang * barang.getHarga());
-                    System.out.println("Total Harga: Rp" + totalHarga);
+                    System.out.println("Total Harga: Rp" + (int) totalHarga);
                     hargaFinal = totalHarga;
 
                     //jika yang dibeli adalah minuman dan harganya di atas Rp100rb
-                    if(totalHarga>100000 && barang.getJenis().equals("Minuman")){
+                    if(totalHarga>100000 && barang.getJenis().equals("minuman")){
                         //dapat diskon 15%
-                        System.out.println("Diskon 15%: -Rp" + (totalHarga * (15f/100)));
-                        hargaFinal = totalHarga - (totalHarga * (15f/100));
+                        System.out.println("Diskon minuman di atas Rp100rb 15%: -Rp" + (int) (totalHarga * (15f/100)));
+                        hargaFinal = hargaFinal - (totalHarga * (15f/100));
                     }
 
                     //jika status pelanggan adalah membership
                     if(pembeli.getStatusPelanggan().equals("Membership")){
                         //dapat diskon 25%
-                        System.out.println("Diskon membership 20%: -Rp" + (totalHarga * (20f/100)));
-                        hargaFinal = totalHarga - (totalHarga * (20f/100));
+                        System.out.println("Diskon membership 20%: -Rp" + (int) (totalHarga * (20f/100)));
+                        hargaFinal = hargaFinal - (totalHarga * (20f/100));
                     } else{//jika status pelanggan adalah tidak tetap
                         //jika yang dibeli harganya di atas Rp300rb
                         if(totalHarga>300000){
                             //dapat diskon 15%
-                            System.out.println("Diskon 15%: -Rp" + (totalHarga * (15f/100)));
-                            hargaFinal = totalHarga - (totalHarga * (15f/100));
+                            System.out.println("Diskon pembelian di atas Rp300rb 15%: -Rp" + (int) (totalHarga * (15f/100)));
+                            hargaFinal = hargaFinal - (totalHarga * (15f/100));
                         }
                         
                         //Jika yang dibeli harganya di atas Rp50rb
